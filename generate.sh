@@ -6,14 +6,19 @@
 
 set -e
 
-echo "Gerando código Go usando buf..."
+echo "Verificando arquivos proto com buf lint..."
 
 # Tentar usar buf generate primeiro
 if command -v buf &> /dev/null; then
+    # Executar lint primeiro - se falhar, o script para (set -e)
+    echo "Executando lint..."
+    buf lint
+    echo "Lint passou! Gerando código Go..."
     buf generate
     echo "Código gerado com sucesso usando buf!"
 else
     echo "buf não encontrado, usando protoc diretamente..."
+    echo "AVISO: Lint não será executado sem buf instalado."
     
     # Encontrar o caminho dos imports do Google
     GOOGLE_PROTO_PATH=""
