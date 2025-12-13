@@ -29,7 +29,6 @@ func (s *Server) CreateAnimal(ctx context.Context, req *animalsv1.CreateAnimalRe
 }
 
 func main() {
-
 	grpcServer := grpc.NewServer()
 
 	server := new(Server)
