@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package pkg.proto.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/rafikmoreira/animals/pkg;animalsv1";
+
+service AnimalsService {
+  rpc GetAnimal(GetAnimalRequest) returns (GetAnimalResponse);
+  rpc CreateAnimal(CreateAnimalRequest) returns (CreateAnimalResponse);
+}
+
+
+enum AnimalType {
+  ANIMAL_TYPE_UNSPECIFIED = 0;
+  ANIMAL_TYPE_MAMMALS = 1;
+  ANIMAL_TYPE_BIRDS = 2;
+  ANIMAL_TYPE_AMPHIBIANS = 3;
+  ANIMAL_TYPE_REPTILES = 4;
+}
+
+message Animal {
+  string name = 1;
+  AnimalType animal_type = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message GetAnimalRequest {
+}
+
+message GetAnimalResponse {
+  Animal animal = 1;
+}
+
+message CreateAnimalRequest {
+  string name = 1;
+  AnimalType animal_type = 2;
+}
+
+message CreateAnimalResponse {
+  Animal animal = 1;
+}
+
+
