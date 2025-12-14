@@ -34,7 +34,7 @@ else
       --go_opt=paths=source_relative \
       --go-grpc_out=. \
       --go-grpc_opt=paths=source_relative \
-      --proto_path=pkg/proto/v1 \
+      --proto_path=. \
       ${GOOGLE_PROTO_PATH:+"--proto_path=$GOOGLE_PROTO_PATH"} \
       pkg/proto/v1/animals.proto
     
